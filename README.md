@@ -15,7 +15,7 @@ Use this package to prepare datasets and build models as well as deploy, monitor
     Install via pip:
 
     ```bash
-    pip install git+https://github.com/geoiq-io/geoiq_automl.git
+    pip install git+https://github.com/geoiq-io/geoiq_automl_in.git
     ```
     
     ```bash
@@ -134,7 +134,7 @@ Use this package to prepare datasets and build models as well as deploy, monitor
 
 
 
-## See [demo_geoiq_automl.ipynb](https://github.com/geoiq-io/geoiq_automl/blob/main/tests/final_demo_geoiq_automl.ipynb) for more details.
+## See [demo_geoiq_automl.ipynb](https://github.com/geoiq-io/geoiq_automl_in/blob/main/tests/final_demo_geoiq_automl.ipynb) for more details.
 
 
 
