@@ -219,9 +219,6 @@ class automl:
         str
             A URL through which enriched data containing GeoIQ variables can be downloaded.
 
-        Raises
-        ------
-        None
 
         Notes
         -----
@@ -291,9 +288,10 @@ class automl:
 
             response = requests.request("GET", url, headers=self.headers, data=payload)
             print(f"Dataset creation is completed for this dataset id {dataset_id}")
-            return response.json()['data']
+            return 
         else:
-            return (response.json()['data']['progress'][0])
+            progress_dict  = response.json()['data']['progress'][0]
+            return {key: progress_dict[key] for key in ['dataset_id','dataset_name','status_text']}
             
 
     
@@ -373,9 +371,6 @@ class automl:
             A DataFrame containing the results of the EDA, including various statistical measures and information
             about the dataset's columns.
 
-        Raises
-        ------
-        None
 
         Notes
         -----
@@ -450,7 +445,11 @@ class automl:
         dict_nested['created_at'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(dict_nested['created_at']))
         dict_nested['updated_at'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(dict_nested['updated_at']))
     
-        return dict_nested
+        return {key: dict_nested[key] for key in ['address_col', 'created_at', 'data_path', 'data_type', 'dv_col',
+                                     'dv_positive', 'dv_rate', 'geocoding', 'identifier_col',
+                                      'lat_col', 'lng_col', 'name', 'number_of_categorical',
+                                     'number_of_columns', 'number_of_numerical', 'number_of_rows', 'number_of_rows_geoiq',
+                                     'pincode_col', 'remarks', 'status', 'total_dv_rate', 'updated_at', 'user_selected_vars']}
 
     
     def delete_dataset(self, dataset_id):
@@ -637,8 +636,9 @@ class automl:
         })
 
         response = requests.request("POST", url, headers=self.headers, data=payload)
+        progress_dict  = response.json()['data']['progress'][0]
+        return {key: progress_dict[key] for key in ['model_id','model_name','status_text']} 
 
-        return (response.json()['data']['progress'][0])
 
 
 
@@ -814,9 +814,6 @@ class automl:
             - 'KS': Kolmogorov-Smirnov (KS) statistic for each decile
             - 'Positive Class Percentage': Percentage of positive class instances in each decile
 
-        Raises
-        ------
-        None
 
         Example
         -------
