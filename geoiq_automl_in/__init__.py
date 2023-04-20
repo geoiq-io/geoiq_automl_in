@@ -600,6 +600,20 @@ class automl:
         return model_id
     
     def delete_model(self, model_id):
+        
+        """
+        Deletes a trained model from the GeoIQ AutoML API by its unique ID.
+
+        Parameters
+        ----------
+            model_id (str): The ID of the model to delete.
+
+        Returns
+        -------
+            None
+
+        """
+        
         url = "https://automlapis-in.geoiq.io/wrapper/prod/dataset/v1.0/deletemodel"
 
         payload = json.dumps({
@@ -623,11 +637,11 @@ class automl:
         Parameters
         ----------
         model_id : str
-            Model ID of the model to be deleted.
+            Model ID of the model.
 
         Returns
         -------
-        None
+        Return a dict containing the model progress status details
 
         """
         url = "https://automlapis-in.geoiq.io/wrapper/prod/progress/v1.0/getmodelprogress"
@@ -729,7 +743,6 @@ class automl:
 
         Returns
         -------
-        None
             Plots the ROC curve.
         """
         
@@ -974,7 +987,6 @@ class automl:
 
         Returns
         -------
-        None
             Plots the lift chart.
         """
         url = "https://automlapis-in.geoiq.io/wrapper/prod/validationdatasets/v1.0/getmodelliftchart"
@@ -1136,6 +1148,7 @@ class automl:
         str
             URL to download the batch predictions.
         """
+        
         url = "https://automlapis-in.geoiq.io/wrapper/prod/validationdatasets/v1.0/getvdproperties"
 
         payload = json.dumps({
@@ -1162,6 +1175,7 @@ class automl:
         pandas.DataFrame
             List of validation datasets as a DataFrame.
         """
+        
         url = "https://automlapis-in.geoiq.io/wrapper/prod/validationdatasets/v1.0/getallvddatasets"
 
         payload=json.dumps({
@@ -1191,6 +1205,7 @@ class automl:
         str
             Endpoint URL of the deployed model.
         """
+        
         url = "https://automlapis-in.geoiq.io/wrapper/prod/model/v1.0/getdeployedmodelendpoint"
 
         payload = json.dumps({
@@ -1239,7 +1254,6 @@ class automl:
 
     
     def get_model_var(self, latitude,longitude, model_id):
-        
         """
         Retrieves geoiq variables for a given latitude and longitude using a deployed model.
 
