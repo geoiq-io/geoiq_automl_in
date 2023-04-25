@@ -878,7 +878,7 @@ class automl:
             An unique identifier for the dataset.
         model_id : str
             An unique identifier for the model.
-        threshold : float
+        threshold : float, Default value is None
             The threshold used for prediction.
 
         Returns
@@ -892,7 +892,7 @@ class automl:
         payload = json.dumps({
         'model_id': model_id,
         'dataset_id': dataset_id,
-        'threshold': str(threshold),
+        'threshold': str(threshold) if threshold is not None else None,
         })
 
         response = requests.request("GET", url, headers=self.headers, data=payload)
